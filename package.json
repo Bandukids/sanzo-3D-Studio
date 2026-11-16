@@ -1,0 +1,19 @@
+{
+  "name": "sanzo-3d-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SANZO 3D Studio — 文字 / 图片生成 3D 资产（混元 3D + Tripo 3D，经腾讯云 TokenHub）",
+  "scripts": {
+    "test": "node --test",
+    "preview:demo": "node scripts/preview-demo.mjs",
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  }
+}

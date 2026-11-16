@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SANZO 3D · 让想象成为形体</title>
+  <meta name="description" content="SANZO 3D Studio —— 用一句话或一张图，生成可下载的 3D 资产。">
+  <meta name="theme-color" content="#050a12">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3 27 9v14l-11 6L5 23V9z' fill='%23ff9f66'/%3E%3Cpath d='M16 16 27 9M16 16 5 9M16 16v13' stroke='%23050a12' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('sanzo-3d-theme')==='dark'?'dark':'light'}catch{}</script>
+  <link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/workspace.css">
+  <script type="importmap">
+  { "imports": { "three": "/vendor/three/build/three.module.js", "three/addons/": "/vendor/three/examples/jsm/" } }
+  </script>
+</head>
+<body data-view="home"><script>document.body.dataset.view=location.pathname==='/'?'home':location.pathname.split('/')[1]</script><a class="skip" href="#mainContent">跳到主要内容</a>
+<svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><symbol id="i-cube" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></symbol><symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol><symbol id="i-studio" viewBox="0 0 24 24"><path d="M5 4v16M12 4v16M19 4v16"/><circle cx="5" cy="9" r="2"/><circle cx="12" cy="16" r="2"/><circle cx="19" cy="8" r="2"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path d="m9 3-1 3-3 1-2 3 2 2v3l3 1 1 3h6l1-3 3-1v-3l2-2-2-3-3-1-1-3Z"/><circle cx="12" cy="11" r="3"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.2A9 9 0 0 1 9.8 3.5a9 9 0 1 0 10.7 10.7Z"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol><symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7V5h6l2 2h10v13H3Z"/></symbol><symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v10h-6v-7H9v7H3Z"/></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-edit" viewBox="0 0 24 24"><path d="m16 3 5 5-12 12-6 1 1-6L16 3Zm-2 2 5 5"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 16l9 5 9-5"/></symbol><symbol id="i-external" viewBox="0 0 24 24"><path d="M14 3h7v7M21 3 10 14M10 3H3v18h18v-7"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol><symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 7"/></symbol><symbol id="i-bone" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v7m-5-4 5 2 5-2m-5 4-4 7m4-7 4 7"/></symbol><symbol id="i-restore" viewBox="0 0 24 24"><path d="M3 10a9 9 0 1 1 2 8M3 4v6h6M12 7v5l3 2"/></symbol></defs></svg><div id="homePage"><header class="nav" id="nav"><a class="logo" href="/" data-route aria-label="SANZO 3D 首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>SANZO</span><small>3D</small></a>
+<nav class="nav-links" aria-label="首页导航"><a href="/create/" data-route>创作空间</a>
+<a href="/assets/" data-route>我的资产</a>
+<a href="/studio/" data-route>Studio</a>
+<a href="https://sanzomusic.com/" target="_blank" rel="noopener">SANZO Music ↗</a>
+</nav>
+<a class="home-start soft-button" href="/create/" data-route>开始创作 <svg class="icon " aria-hidden="true"><use href="#i-arrow"/></svg></a>
+</header>
+<main id="homeMain">    <section class="hero" id="hero">
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-fade" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <p class="eyebrow"><span class="line"></span>AI 3D. HUMAN IMAGINATION.</p>
+        <h1>让想象，<br>成为<em>形体</em>。</h1>
+        <p class="lead">简单描述一下，剩下的交给 AI。</p>
+
+        <form class="composer glass" id="heroForm">
+          <label class="sr" for="heroPrompt">描述你想生成的 3D 物体</label>
+          <textarea id="heroPrompt" rows="3" maxlength="1024" placeholder="你想创造什么？描述它的外形、材质或风格…"></textarea>
+          <div class="composer-bar">
+            <span class="hint">✦ 混元 3D · Tripo 3D 双引擎</span>
+            <button class="btn-primary" type="submit">进入创作 <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+
+<div class="home-destinations"><a href="/create/" data-route><svg class="icon " aria-hidden="true"><use href="#i-spark"/></svg><span><b>进入创作空间</b><small>文字 · 图片 · 无限可能</small></span><svg class="icon " aria-hidden="true"><use href="#i-arrow"/></svg></a>
+<a href="/assets/" data-route><svg class="icon " aria-hidden="true"><use href="#i-grid"/></svg><span><b>打开我的资产</b><small>模型 · 骨架 · 动作版本</small></span><svg class="icon " aria-hidden="true"><use href="#i-arrow"/></svg></a>
+</div>
+        <div class="chips" id="chips">
+          <span class="chips-label">试试灵感</span>
+          <button type="button" class="chip" data-p="一只戴着宇航员头盔的卡通柴犬，圆润可爱，盲盒手办风格">宇航柴犬</button>
+          <button type="button" class="chip" data-p="一把赛博朋克风格的发光武士刀，刀身有蓝色能量纹路">赛博武士刀</button>
+          <button type="button" class="chip" data-p="一座漂浮的小岛，上面有一间小木屋和一棵樱花树，低多边形风格">浮空小岛</button>
+          <button type="button" class="chip" data-p="一个复古的黄铜机械留声机，带有精细的雕花喇叭">黄铜留声机</button>
+        </div>
+      </div>
+
+      <div class="hero-foot">
+        <div><b>01</b><span>THE SHAPE OF IDEAS</span><p>灵感，凝结成形。</p></div>
+        <a href="#flow" class="scroll-cue">向下探索 <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+
+    <section class="section" id="flow">
+      <div class="section-head">
+        <p class="eyebrow center">HOW IT WORKS</p>
+        <h2>形体，从一个念头开始。</h2>
+        <p class="sub">无需懂建模。<br>写下脑海中的画面，得到可以直接使用的 3D 资产。</p>
+      </div>
+      <div class="steps">
+        <article class="step glass"><span>01 / MODEL</span><i>✦</i><h3>生成角色模型</h3><p>一句描述或一张图，<br>混元与 Tripo 生成带贴图的网格。</p></article>
+        <article class="step glass"><span>02 / RIG</span><i>◈</i><h3>自动绑骨蒙皮</h3><p>一键为角色加上骨骼与权重，<br>在浏览器里直接查看骨架。</p></article>
+        <article class="step glass"><span>03 / ANIMATE</span><i>⬡</i><h3>让它动起来</h3><p>套用走、跑、跳、打斗等动作模板，<br>预览后下载 FBX 放进引擎。</p></article>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <p class="eyebrow center">MADE FOR YOUR IMAGINATION</p>
+      <h2>下一个，<em>由你开始。</em></h2>
+      <a class="btn-primary" href="/create/" data-route>进入创作台</a>
+      <p class="sub">给灵感一个形体。</p>
+    </section>
+</main>
+<footer class="footer"><a class="logo" href="/" data-route><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>SANZO</span><small>3D</small></a>
+<p>形体，拥有无限可能。</p><a href="https://sanzomusic.com/" target="_blank" rel="noopener">SANZO FAMILY ↗</a>
+<p class="muted">© 2026 SANZO</p></footer>
+</div>
+<div id="appShell" hidden><div class="workspace-aura" aria-hidden="true"></div>
+<button class="menu-backdrop" id="menuBackdrop" aria-label="关闭导航" hidden></button>
+<aside class="app-sidebar glass" id="appSidebar" aria-label="主导航"><a class="logo sidebar-brand" href="/" data-route><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>SANZO</span><small>3D</small></a>
+<p class="sidebar-label">YOUR CREATIVE SPACE</p><nav class="sidebar-nav"><a href="/create/" data-route data-nav="create"><svg class="icon " aria-hidden="true"><use href="#i-spark"/></svg><span>创作空间</span></a>
+<a href="/assets/" data-route data-nav="assets"><svg class="icon " aria-hidden="true"><use href="#i-grid"/></svg><span>我的资产</span></a>
+<a href="/studio/" data-route data-nav="studio"><svg class="icon " aria-hidden="true"><use href="#i-studio"/></svg><span>Studio</span></a>
+<a href="/tasks/" data-route data-nav="tasks"><svg class="icon " aria-hidden="true"><use href="#i-clock"/></svg><span>任务中心</span><small id="taskCount" hidden></small></a>
+</nav>
+<div class="sidebar-project"><span>创作，从这里继续</span><p>给灵感一个形体。<br>再让它动起来。</p><a href="/create/" data-route>开启新想象 <svg class="icon " aria-hidden="true"><use href="#i-plus"/></svg></a>
+</div>
+<div class="sidebar-footer"><button id="themeToggle" class="sidebar-preference" type="button"><svg class="icon " aria-hidden="true"><use href="#i-sun"/></svg><span id="themeLabel">浅色模式</span><small>切换</small></button>
+<a href="/settings/" data-route data-nav="settings" class="sidebar-preference"><svg class="icon " aria-hidden="true"><use href="#i-settings"/></svg><span>偏好与连接</span></a>
+<a class="sidebar-preference" href="https://sanzomusic.com/" target="_blank" rel="noopener"><svg class="icon " aria-hidden="true"><use href="#i-external"/></svg><span>SANZO Music</span></a>
+<div class="connection-mini"><span class="connection-dot" id="connectionDot"></span><span id="connectionLabel">正在连接服务</span></div>
+<span class="lab-label">SANZO / THREE DIMENSION LAB</span></div>
+</aside>
+<div class="shell-main" id="mainContent"><header class="workspace-header glass"><div class="breadcrumb"><button class="icon-button" id="menuToggle" type="button" aria-label="展开导航" aria-controls="appSidebar" aria-expanded="false"><svg class="icon " aria-hidden="true"><use href="#i-menu"/></svg></button>
+<a href="/" data-route>首页</a>
+<span>/</span><strong id="pageTitle">创作空间</strong></div>
+<div class="header-end"><span class="header-note">让想象，拥有形体。</span><a class="icon-button" href="/assets/" data-route aria-label="我的资产"><svg class="icon " aria-hidden="true"><use href="#i-grid"/></svg></a>
+<span class="creator-avatar" title="本地创作空间">S</span></div>
+</header>
+<nav class="mobile-work-tabs" id="mobileWorkTabs" aria-label="工作台区域"><button type="button" data-work-tab="form" aria-pressed="true">创作参数</button>
+<button type="button" data-work-tab="preview" aria-pressed="false">模型预览</button>
+<a href="/assets/" data-route>我的资产</a>
+</nav>    <section class="workbench" id="studio">
+
+
+      <div class="studio-grid">
+        <form class="panel glass" id="genForm" novalidate><div class="composer-heading"><p class="micro-label">MAKE SOMETHING YOURS</p><h1 id="composerTitle">创作新形体<span>。</span></h1><p id="composerSubtitle">从一个念头，到触手可及。</p></div>
+<div class="form-scroll">
+          <div class="tabs" role="tablist">
+            <button type="button" role="tab" class="tab is-active" data-mode="text" aria-selected="true">文生模型</button>
+            <button type="button" role="tab" class="tab" data-mode="image" aria-selected="false">图生模型</button>
+            <button type="button" role="tab" class="tab" data-mode="rig" aria-selected="false">模型绑骨</button>
+            <button type="button" role="tab" class="tab" data-mode="motion" aria-selected="false">文生动作</button>
+          </div>
+
+          <div class="mode-pane" data-pane="text">
+            <label class="field-label" for="prompt">描述 <span id="promptCount">0 / 1024</span></label>
+            <textarea id="prompt" rows="5" maxlength="1024" placeholder="例如：一只原创卡通小猫，坐姿，毛绒质感"></textarea>
+          </div>
+
+          <div class="mode-pane" data-pane="image" hidden>
+            <label class="field-label">参考图</label>
+            <label class="drop" id="drop" role="button" tabindex="0" aria-label="上传参考图">
+              <input type="file" id="imageFile" accept="image/jpeg,image/png,image/webp" hidden>
+              <img id="imagePreview" alt="" hidden>
+              <span class="drop-text" id="dropText"><b>点击或拖入图片</b><small>JPEG / PNG / WebP · ≤ 6 MB · 主体清晰、背景干净效果更好</small></span>
+              <button type="button" class="drop-clear" id="imageClear" hidden aria-label="移除图片">×</button>
+            </label>
+            <label class="field-label" for="imageUrl">或图片链接</label>
+            <input type="url" id="imageUrl" placeholder="https://…（公开可访问的 HTTPS 图片）">
+            <p class="tip" id="tripoTip" hidden>Tripo 图生 3D 目前只接受图片链接，不支持本地上传。</p>
+          </div>
+
+          <div class="mode-pane" data-pane="rig" hidden>
+            <label class="field-label" for="rigUrl">已有模型的链接</label>
+            <input type="url" id="rigUrl" placeholder="https://…/character.glb（公开可访问的 HTTPS）">
+            <p class="tip muted-tip">给站外的模型绑骨。刚生成的模型不用填链接，直接在右侧预览下方的「管线」里继续。</p>
+            <div id="rigUrlControls"></div>
+          </div>
+
+          <div class="mode-pane" data-pane="motion" hidden>
+            <label class="field-label" for="motionPrompt">动作描述 <span id="motionCount">0 / 128</span></label>
+            <textarea id="motionPrompt" rows="3" maxlength="128" placeholder="例如：一个人向前走两步，然后挥手打招呼"></textarea>
+            <label class="field-label" for="motionDuration">时长 <span id="motionDurationText">5 秒</span></label>
+            <input type="range" id="motionDuration" min="1" max="12" step="1" value="5">
+            <p class="tip muted-tip">文生动作生成的是带标准人形的独立动画（FBX）。接口暂不支持把它重定向到你自己的角色；要让自己的角色动起来，请用绑骨里的动作模板。</p>
+          </div>
+
+          <label class="field-label" id="modelsLabel" for="models">生成引擎 <span>双引擎 · 多种可能</span></label><div id="engineField"><select id="models" aria-label="生成引擎"></select><p class="field-help" id="modelHint"></p></div>
+
+          <details class="advanced" id="advanced"><summary>高级设置<span>材质 · 精度 ＋</span></summary><div class="options" id="options">
+            <label class="switch"><input type="checkbox" id="optPbr" checked><span class="track"></span><span>PBR 材质</span></label>
+            <label class="switch"><input type="checkbox" id="optGeometry"><span class="track"></span><span>白模（无贴图）</span></label>
+            <label class="select-row" id="faceRow">
+              <span>面数</span>
+              <select id="optFaces">
+                <option value="">默认（约 50 万）</option>
+                <option value="50000">5 万 · 轻量</option>
+                <option value="150000">15 万</option>
+                <option value="300000">30 万</option>
+                <option value="1000000">100 万 · 高精</option>
+              </select>
+            </label>
+          </div>
+
+          </details><div class="inspiration-note" id="inspirationNote"><svg class="icon " aria-hidden="true"><use href="#i-spark"/></svg><div><b>让灵感具体一点</b><p>试着描述主体、材质和风格，让结果更靠近你的想象。</p><button type="button" id="randomPrompt">换个灵感 <svg class="icon " aria-hidden="true"><use href="#i-arrow"/></svg></button>
+</div>
+</div>
+</div>
+<div class="composer-actions"><label class="switch demo-switch"><input type="checkbox" id="optDemo"><span class="track"></span><span>演示模式 <small>不调用 API、不消耗额度</small></span></label>
+
+          <button class="btn-primary wide" type="submit" id="genBtn">开始生成 <span aria-hidden="true">→</span></button>
+          <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+</div>
+</form>
+
+        <div class="stage-col"><div class="canvas-heading"><div><span class="micro-label">YOUR IDEA, TAKING SHAPE</span><h2>灵感，正在成形。</h2></div>
+<button class="soft-button" id="versionsBtn" type="button" disabled><svg class="icon " aria-hidden="true"><use href="#i-layers"/></svg><span>资产版本</span></button>
+</div>
+        <div class="stage glass" id="stage">
+          <div class="viewer" id="viewer"></div>
+<div class="stage-guide" id="stageGuide"><span>YOUR NEXT CREATION</span><p>每个形体，都始于想象。</p><small>写下描述，或从资产库继续创作</small></div>
+<div class="stage-axis" aria-hidden="true"><i>Y</i><b>Z</b><span>X</span></div>
+<div class="stage-gesture">拖动旋转 · 滚轮缩放</div>
+          <div class="stage-top">
+            <div class="stage-title"><span class="badge" id="stageBadge">待命</span><span id="stageName">等待你的第一个灵感</span></div>
+            <div class="tools">
+              <button type="button" class="tool is-on" id="tRotate" title="自动旋转" aria-pressed="true">旋转</button>
+              <button type="button" class="tool" id="tWire" title="线框模式" aria-pressed="false">线框</button>
+              <button type="button" class="tool" id="tBones" title="显示骨骼" aria-pressed="false" hidden>骨骼</button>
+              <button type="button" class="tool" id="tReset" title="重置视角">复位</button>
+            </div>
+          </div>
+          <div class="stage-status" id="stageStatus" hidden>
+            <p class="status-line"><span id="statusText">排队中</span><span id="statusTime">00:00</span></p>
+            <div class="bar"><i id="statusBar"></i></div>
+            <p class="status-sub" id="statusSub">任务已提交，云端正在计算。可以离开页面，稍后在作品库查看。</p>
+          </div>
+          <div class="anim-bar" id="animBar" hidden>
+            <button type="button" class="tool is-on" id="aPlay" aria-pressed="true">暂停</button>
+            <div class="clips" id="aClips"></div>
+          </div>
+          <div class="stage-bottom" id="downloads" hidden></div>
+        </div>
+
+        <div class="pipeline glass" id="pipeline"><div class="pipeline-heading"><span>继续创作</span><small>让形体，拥有更多可能</small></div>
+          <ol class="ptrack" id="track">
+            <li data-step="model"><b>01</b><span>建模</span></li>
+            <li data-step="rig"><b>02</b><span>绑骨</span></li>
+            <li data-step="anim"><b>03</b><span>动作</span></li>
+          </ol>
+          <div class="pipe-body" id="pipeBody"></div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+<section id="assetsPage" class="content-page" hidden><div class="page-heading"><div><p class="micro-label">A PLACE FOR YOUR IMAGINATION</p><h1>我的资产<span>。</span></h1><p>每一次灵感，都值得被好好收藏。</p></div>
+<a class="btn-primary" href="/create/" data-route><svg class="icon " aria-hidden="true"><use href="#i-plus"/></svg>创建新资产</a>
+</div>
+<div class="asset-toolbar"><div class="filter-tabs" id="assetFilters" role="group" aria-label="资产分类"><button type="button" data-filter="all" class="is-active" aria-pressed="true">全部资产 <small id="assetCount">0</small></button>
+<button type="button" data-filter="model" aria-pressed="false">模型</button>
+<button type="button" data-filter="animated" aria-pressed="false">骨架与动作</button>
+<button type="button" data-filter="trash" aria-pressed="false"><svg class="icon " aria-hidden="true"><use href="#i-trash"/></svg>回收站</button>
+</div>
+<label class="search-box"><svg class="icon " aria-hidden="true"><use href="#i-search"/></svg><input id="assetSearch" type="search" placeholder="搜索资产、描述或引擎" aria-label="搜索资产"></label></div>
+<div class="asset-subtoolbar"><span id="assetSummary">你的所有形体，在这里相遇。</span><div><label class="sr" for="collectionFilter">筛选项目</label><select id="collectionFilter"><option value="">所有项目</option></select><label class="sr" for="assetSort">资产排序</label><select id="assetSort"><option value="newest">最近创建</option><option value="oldest">最早创建</option><option value="name">名称排序</option></select></div>
+</div>
+<div class="gallery" id="galleryGrid"></div>
+<div class="empty-state" id="galleryEmpty"><svg class="icon " aria-hidden="true"><use href="#i-cube"/></svg><h2>让第一个灵感，在这里成形。</h2><p>生成的模型、骨架与动作，会自动整理到这里。</p><a href="/create/" data-route class="soft-button">开始创作 <svg class="icon " aria-hidden="true"><use href="#i-arrow"/></svg></a>
+</div>
+</section>
+<section class="content-page" id="tasksPage" hidden><div class="page-heading"><div><p class="micro-label">IDEAS IN THE MAKING</p><h1>任务中心<span>。</span></h1><p>从排队到完成，每一步都有迹可循。</p></div>
+<button class="soft-button" id="refreshTasks" type="button"><svg class="icon " aria-hidden="true"><use href="#i-restore"/></svg>刷新状态</button>
+</div>
+<div class="task-stats" id="taskStats"></div>
+<div class="task-list glass" id="taskList"></div>
+</section>
+<section class="content-page settings-page" id="settingsPage" hidden><div class="page-heading"><div><p class="micro-label">MAKE YOURSELF AT HOME</p><h1>偏好与连接<span>。</span></h1><p>让创作空间，成为你熟悉的样子。</p></div>
+</div>
+<article class="settings-card glass"><div><svg class="icon " aria-hidden="true"><use href="#i-sun"/></svg><h2>空间外观</h2></div>
+<p>冰蓝玻璃，或深蓝夜色。主题会保存在当前浏览器。</p><div class="theme-options"><button type="button" data-theme-choice="light">☀<span>浅色 · 冰蓝玻璃</span></button>
+<button type="button" data-theme-choice="dark">☾<span>深色 · 静谧夜色</span></button>
+</div>
+</article>
+<article class="settings-card glass"><div><svg class="icon " aria-hidden="true"><use href="#i-cube"/></svg><h2>生成服务</h2></div>
+<p>混元 3D 与 Tripo 3D，通过 TokenHub 提供生成能力。</p><button class="pill" id="keyPill" type="button" title="检查服务凭证，不提交生成任务"><span class="dot"></span><span id="keyText">检测中…</span></button>
+<p class="field-help">“已配置”表示服务端已设置凭证，点击可验证连接。未配置时可以使用演示模式。</p></article>
+<article class="settings-card glass"><div><svg class="icon " aria-hidden="true"><use href="#i-folder"/></svg><h2>资产存储</h2></div>
+<p>模型、预览图和任务记录保存在本机。移入回收站后仍可恢复。</p><a class="text-link" href="/assets/" data-route>管理我的资产 <svg class="icon " aria-hidden="true"><use href="#i-arrow"/></svg></a>
+</article>
+</section>
+<footer class="workspace-foot"><span>想象，未完待续。</span><span>SANZO 3D STUDIO</span></footer>
+</div>
+</div>
+<dialog aria-labelledby="assetDialogTitle" id="assetDialog" class="asset-dialog glass"><div class="dialog-header"><div><span class="micro-label">ONE IDEA, MANY POSSIBILITIES</span><h2 id="assetDialogTitle">资产详情</h2></div>
+<button class="icon-button" type="button" data-close-dialog aria-label="关闭资产详情"><svg class="icon " aria-hidden="true"><use href="#i-close"/></svg></button>
+</div>
+<form id="assetMetaForm"><label for="assetName">资产名称</label><input id="assetName" maxlength="120" required autocomplete="off"><label for="assetCollection">所属项目</label><input id="assetCollection" maxlength="60" placeholder="例如：角色设计、我的游戏" list="collectionSuggestions" autocomplete="off"><datalist id="collectionSuggestions"></datalist><div class="dialog-actions"><span id="assetSaveMsg" role="status"></span><button class="soft-button" type="submit"><svg class="icon " aria-hidden="true"><use href="#i-check"/></svg>保存信息</button>
+</div>
+</form>
+<div class="version-heading"><h3>版本与创作记录</h3><span id="versionCount"></span></div>
+<div id="versionList" class="version-list"></div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script type="module" src="/js/main.js"></script></body></html>
